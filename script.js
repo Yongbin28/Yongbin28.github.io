@@ -1,4 +1,14 @@
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const hero=document.querySelector('.hero');
+if(reduced) hero.classList.add('hero-live');
+else{
+  const boot=document.createElement('div');
+  boot.className='motion-boot';boot.setAttribute('aria-hidden','true');
+  boot.innerHTML='<div class="boot-door"></div><div class="boot-door"></div><div class="boot-console"><div class="boot-status"><b>LYB / WAFER LAB</b><span>SYSTEM INITIALISING</span></div><div class="boot-dies">'+Array.from({length:45},(_,i)=>`<i class="boot-die" style="--i:${i}"></i>`).join('')+'</div><div class="boot-rail"><i></i></div></div>';
+  document.body.prepend(boot);document.body.style.overflow='hidden';
+  setTimeout(()=>{boot.classList.add('exit');hero.classList.add('hero-live');document.body.style.overflow=''},1250);
+  setTimeout(()=>boot.remove(),2050);
+}
 const menu=document.querySelector('.menu'),nav=document.querySelector('#nav');
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open)});
 nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{nav.classList.remove('open');menu.setAttribute('aria-expanded','false')}));
@@ -9,6 +19,14 @@ addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-i
 const reveals=[...document.querySelectorAll('.reveal')];
 if(reduced) reveals.forEach(x=>x.classList.add('visible'));
 else{const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target)}}),{threshold:.12});reveals.forEach((x,i)=>{x.style.transitionDelay=(i%4)*70+'ms';io.observe(x)})}
+
+const sequences=[...document.querySelectorAll('.signal-sequence')];
+if(reduced)sequences.forEach(x=>x.classList.add('signal-live'));
+else{const sequenceObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('signal-live');sequenceObserver.unobserve(e.target)}}),{threshold:.22});sequences.forEach(x=>sequenceObserver.observe(x))}
+
+const heroLab=document.querySelector('.hero-lab');
+heroLab.addEventListener('pointermove',e=>{if(reduced||innerWidth<900)return;const r=heroLab.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;heroLab.style.setProperty('--px',`${x*18}px`);heroLab.style.setProperty('--py',`${y*18}px`)});
+heroLab.addEventListener('pointerleave',()=>{heroLab.style.setProperty('--px','0px');heroLab.style.setProperty('--py','0px')});
 
 const canvas=document.querySelector('#wafer'),ctx=canvas.getContext('2d');let width=0,height=0,dpr=1,cells=[];
 function resize(){const r=canvas.getBoundingClientRect();dpr=Math.min(devicePixelRatio,2);width=r.width;height=r.height;canvas.width=width*dpr;canvas.height=height*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);buildCells()}
