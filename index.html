@@ -37,6 +37,9 @@
       <div class="hero-lab" aria-label="Animated semiconductor wafer visualization">
         <canvas id="wafer" aria-hidden="true"></canvas>
         <div class="scanline" aria-hidden="true"></div>
+        <div class="hero-evidence h1"><small>01 / MONITOR</small><b>Distribution shift</b></div>
+        <div class="hero-evidence h2"><small>02 / PREDICT</small><b>Final-test yield</b></div>
+        <div class="hero-evidence h3"><small>03 / EXPLAIN</small><b>Engineer review</b></div>
         <div class="lab-tag"><span>LIVE MODEL</span><b>WQG / 0.7581 R²</b><small>Early final-test yield prediction</small></div>
         <div class="corner c1"></div><div class="corner c2"></div><div class="corner c3"></div><div class="corner c4"></div>
       </div>
@@ -77,38 +80,43 @@
     </section>
 
     <section class="project" id="project">
-      <div class="project-head reveal"><div><p class="overline">Final Year Project / flagship case</p><h2>Predictive<br>Wafer Quality Gate</h2></div><div class="project-intro"><p>A decision-control system that identifies high-risk wafers before packaging, bringing together distribution monitoring, explainable prediction and engineering judgement.</p><a class="project-link" href="https://waferpulse.streamlit.app/" target="_blank" rel="noreferrer"><span>Launch live system</span><b>WaferPulse ↗</b><small>Opens the Streamlit application</small></a></div></div>
-      <div class="pipeline reveal signal-sequence" aria-label="Wafer quality gate process">
-        <article><b>01</b><span>INGEST</span><h3>Wafer probe data</h3><p>Normalize cross-platform test information.</p></article><i></i>
-        <article><b>02</b><span>DIAGNOSE</span><h3>Shift &amp; anomaly</h3><p>SPC, PSI and GDBN bin-map detection.</p></article><i></i>
-        <article><b>03</b><span>PREDICT</span><h3>Final-test yield</h3><p>Model downstream performance before packaging.</p></article><i></i>
-        <article><b>04</b><span>EXPLAIN</span><h3>Human-readable gate</h3><p>SHAP signals guide review and root-cause analysis.</p></article>
+      <div class="gate-layout">
+        <div class="gate-copy reveal"><p class="overline">Final Year Project / flagship case</p><h2>Not a pipeline.<br><span>A decision gate.</span></h2><p>Identify high-risk wafers before packaging—and keep the engineering judgement traceable.</p><div class="gate-metric"><b data-count="7581">0</b><span>R² / EARLY FINAL-TEST<br>YIELD PREDICTION</span></div><a class="project-link" href="https://waferpulse.streamlit.app/" target="_blank" rel="noreferrer"><span>Launch live system</span><b>WaferPulse ↗</b><small>Interactive Streamlit application</small></a></div>
+        <div class="decision-gate reveal signal-sequence" aria-label="Predictive Wafer Quality Gate decision map">
+          <i class="gate-ring r1"></i><i class="gate-ring r2"></i><i class="gate-ring r3"></i>
+          <div class="gate-core"><small>ENGINEER</small><b>QUALITY<br>GATE</b></div>
+          <article class="gate-node n1"><small>01 / DATA</small><h3>Probe results</h3><b>INPUT INTEGRITY</b></article>
+          <article class="gate-node n2"><small>02 / SHIFT</small><h3>SPC + PSI</h3><b>DISTRIBUTION EVIDENCE</b></article>
+          <article class="gate-node n3"><small>03 / PATTERN</small><h3>GDBN anomaly</h3><b>SPATIAL EVIDENCE</b></article>
+          <article class="gate-node n4"><small>04 / PREDICT</small><h3>Yield model</h3><b>DOWNSTREAM RISK</b></article>
+          <article class="gate-node n5"><small>05 / EXPLAIN</small><h3>SHAP review</h3><b>TRACEABLE JUDGEMENT</b></article>
+        </div>
       </div>
-      <div class="result-grid reveal"><article><strong data-count="7581">0</strong><span>R² · EARLY YIELD PREDICTION</span></article><article><strong>EARLIER</strong><span>ABNORMAL-WAFER VISIBILITY</span></article><article><strong>TRACEABLE</strong><span>MODEL-TO-DECISION LOGIC</span></article></div>
+      <div class="result-grid reveal"><article><strong>7581</strong><span>R² · EARLY YIELD PREDICTION</span></article><article><strong>EARLIER</strong><span>ABNORMAL-WAFER VISIBILITY</span></article><article><strong>TRACEABLE</strong><span>MODEL-TO-DECISION LOGIC</span></article></div>
     </section>
 
     <section class="section swot" id="swot">
       <div class="section-index"><span>03</span><p>CRITICAL SWOT</p></div>
-      <div class="swot-head reveal"><p class="overline">Honest self-evaluation</p><h2>Know the edge.<br><em>Know the gap.</em></h2><p>Hover or focus each quadrant to examine the evidence and the response.</p></div>
-      <div class="swot-grid">
-        <article class="swot-card reveal" tabindex="0"><header><b>S</b><span>STRENGTHS</span></header><h3>Evidence-led judgement</h3><p>SPC, PSI, correlation and model interpretation turn noisy data into defensible engineering decisions.</p><footer>USE IT → Lead investigations with a transparent evidence chain.</footer></article>
-        <article class="swot-card reveal" tabindex="0"><header><b>W</b><span>WEAKNESSES</span></header><h3>Breadth can dilute depth</h3><p>Wide tool exposure needs deeper foundations in device physics, experimental design and advanced statistics.</p><footer>ADDRESS IT → Structured monthly study and validation practice.</footer></article>
-        <article class="swot-card reveal" tabindex="0"><header><b>O</b><span>OPPORTUNITIES</span></header><h3>AI-enabled manufacturing</h3><p>Explainable prediction can reduce scrap and accelerate root-cause analysis without removing human oversight.</p><footer>PURSUE IT → Build cross-product validation and drift monitoring.</footer></article>
-        <article class="swot-card reveal" tabindex="0"><header><b>T</b><span>THREATS</span></header><h3>Automation bias &amp; fast cycles</h3><p>Models can appear authoritative while tools, data distributions and production priorities keep changing.</p><footer>CONTROL IT → State uncertainty, monitor drift and require review.</footer></article>
+      <div class="swot-head reveal"><p class="overline">Honest self-evaluation</p><h2>Four forces.<br><em>One response.</em></h2><p>A decision matrix that turns each observation into an action.</p></div>
+      <div class="swot-map reveal signal-sequence">
+        <span class="axis-label internal">INTERNAL</span><span class="axis-label external">EXTERNAL</span><span class="axis-label helpful">HELPFUL</span><span class="axis-label harmful">HARMFUL</span>
+        <i class="swot-axis horizontal"></i><i class="swot-axis vertical"></i>
+        <article class="swot-quadrant s" tabindex="0"><b>S</b><div><small>STRENGTH</small><h3>Evidence-led judgement</h3><p>SPC, PSI and explainable models.</p><strong>USE / Lead with a transparent evidence chain.</strong></div></article>
+        <article class="swot-quadrant w" tabindex="0"><b>W</b><div><small>WEAKNESS</small><h3>Breadth needs depth</h3><p>Device physics and experimental design.</p><strong>BUILD / Structured monthly validation practice.</strong></div></article>
+        <article class="swot-quadrant o" tabindex="0"><b>O</b><div><small>OPPORTUNITY</small><h3>AI-enabled manufacturing</h3><p>Earlier risk visibility with human oversight.</p><strong>PURSUE / Cross-product validation and drift monitoring.</strong></div></article>
+        <article class="swot-quadrant t" tabindex="0"><b>T</b><div><small>THREAT</small><h3>Automation bias</h3><p>Confident models can still be wrong.</p><strong>CONTROL / State uncertainty and require review.</strong></div></article>
       </div>
     </section>
 
     <section class="section outcomes" id="outcomes">
       <div class="section-index"><span>04</span><p>PO ATTAINMENT</p></div>
-      <div class="outcome-hero reveal"><p class="overline">Reflection / evidence / action</p><h2>Outcomes,<br><em>made visible.</em></h2><p>Attainment is not a decorative score. It is the ability to connect experience to evidence, identify a gap and act on it.</p></div>
-      <div class="outcome-radar reveal">
-        <div class="rings" aria-hidden="true"><i></i><i></i><i></i><i></i><span class="axis a">PROFESSIONALISM</span><span class="axis b">LIFELONG LEARNING</span><span class="axis c">CRITICAL THINKING</span><span class="axis d">INCLUSIVE IMPACT</span><div class="shape"></div></div>
-        <div class="outcome-copy">
-          <article><b>PO8</b><div><h3>Professional practice</h3><p>Three placements developed responsible documentation, cross-disciplinary communication and judgement under real constraints.</p><small>NEXT · Own a longer project lifecycle and formalise ethical risk review.</small></div></article>
-          <article><b>PO11</b><div><h3>Independent learning</h3><p>I transferred learning across circuit design, databases, industrial automation, test platforms and explainable AI.</p><small>NEXT · Maintain a quarterly evidence-based learning log.</small></div></article>
-          <article><b>CT</b><div><h3>Critical thinking</h3><p>The Wafer Quality Gate questions model outputs through shift detection, interpretation and production context.</p><small>NEXT · Deepen uncertainty reporting and experimental design.</small></div></article>
-          <article><b>II</b><div><h3>Inclusive impact</h3><p>Multicultural teamwork and sustainability projects expanded engineering value beyond technical novelty.</p><small>NEXT · Quantify whole-life cost, carbon and accessibility.</small></div></article>
-        </div>
+      <div class="outcome-hero reveal"><p class="overline">Reflection / evidence / action</p><h2>Evidence in.<br><em>Action out.</em></h2><p>Each outcome connects experience to one deliberate next move.</p></div>
+      <div class="outcome-map reveal signal-sequence">
+        <i class="outcome-ring outer"></i><i class="outcome-ring inner"></i><div class="outcome-core"><small>REFLECT</small><b>EVIDENCE<br>→ ACTION</b></div>
+        <article class="outcome-node po8"><b>PO8</b><h3>Professional practice</h3><p>Three placements under real constraints.</p><small>NEXT / Own a longer project lifecycle.</small></article>
+        <article class="outcome-node po11"><b>PO11</b><h3>Independent learning</h3><p>Learning transferred across four systems.</p><small>NEXT / Keep a quarterly evidence log.</small></article>
+        <article class="outcome-node ct"><b>CT</b><h3>Critical thinking</h3><p>Model output challenged with production context.</p><small>NEXT / Report uncertainty explicitly.</small></article>
+        <article class="outcome-node ii"><b>II</b><h3>Inclusive impact</h3><p>Multicultural and sustainability experience.</p><small>NEXT / Quantify whole-life impact.</small></article>
       </div>
     </section>
 
