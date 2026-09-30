@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="systems.css">
 </head>
 <body>
   <div class="progress" aria-hidden="true"><i></i></div>
@@ -19,7 +20,7 @@
     <a class="brand" href="#top" aria-label="Home"><b>LYB</b><span>Wafer Lab / Portfolio</span></a>
     <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav">
-      <a href="#profile">Profile</a><a href="#journey">Journey</a><a href="#project">FYP</a><a href="#swot">SWOT</a><a href="#outcomes">Outcomes</a>
+      <a href="#profile">Profile</a><a href="#journey">Journey</a><a href="#systems">Systems</a><a href="#project">FYP</a><a href="#swot">SWOT</a><a href="#outcomes">Outcomes</a>
       <a class="resume" href="assets/Resume-Lek-Yong-Bin.pdf" target="_blank">Resume ↗</a>
     </nav>
   </header>
@@ -79,6 +80,50 @@
       </div>
     </section>
 
+    <section class="section systems" id="systems">
+      <div class="section-index"><span>03</span><p>SELECTED SYSTEMS</p></div>
+      <div class="systems-head reveal">
+        <div><p class="overline">Engineering atlas / 2023—2026</p><h2>One engineer.<br><em>Many signals.</em></h2></div>
+        <p>Explore the systems behind the résumé. Each node connects a real engineering constraint to the tool, model or control strategy I used to investigate it.</p>
+      </div>
+
+      <div class="systems-workbench reveal signal-sequence">
+        <div class="systems-atlas" aria-label="Interactive atlas of selected engineering projects">
+          <div class="atlas-orbit orbit-one" aria-hidden="true"></div><div class="atlas-orbit orbit-two" aria-hidden="true"></div><div class="atlas-orbit orbit-three" aria-hidden="true"></div>
+          <svg class="atlas-lines" viewBox="0 0 760 650" preserveAspectRatio="none" aria-hidden="true"><path d="M380 325L132 112M380 325L620 105M380 325L690 322M380 325L592 552M380 325L162 555M380 325L72 325"/></svg>
+          <div class="atlas-core"><span>SEMICONDUCTOR</span><b>Wafer<br>Pulse</b><small>Quality AI</small></div>
+          <button class="atlas-node node-etap" type="button" data-system="etap" aria-controls="system-instrument"><i></i><small>POWER</small><b>ETAP Network Study</b></button>
+          <button class="atlas-node node-micro" type="button" data-system="micro" aria-controls="system-instrument"><i></i><small>EMBEDDED</small><b>Gravity Battery</b></button>
+          <button class="atlas-node node-speech" type="button" data-system="speech" aria-controls="system-instrument"><i></i><small>SIGNAL</small><b>Speech Enhancement</b></button>
+          <button class="atlas-node node-piezo" type="button" data-system="piezo" aria-controls="system-instrument"><i></i><small>POWER ELECTRONICS</small><b>Energy Harvester</b></button>
+          <button class="atlas-node node-energy" type="button" data-system="energy" aria-controls="system-instrument"><i></i><small>SOFTWARE</small><b>Energy Monitor</b></button>
+          <button class="atlas-node node-wafer active" type="button" data-system="wafer" aria-controls="system-instrument" aria-pressed="true"><i></i><small>FLAGSHIP</small><b>WaferPulse</b></button>
+          <div class="atlas-hint"><span></span>SELECT A SIGNAL</div>
+        </div>
+
+        <article class="system-instrument mode-wafer" id="system-instrument" aria-live="polite">
+          <header><span id="instrument-index">INSTRUMENT 01 / QUALITY GATE</span><i></i></header>
+          <div class="instrument-screen" aria-hidden="true">
+            <div class="instrument-grid"></div><div class="instrument-wafer"><i></i><i></i><i></i></div>
+            <svg class="instrument-wave" viewBox="0 0 600 220" preserveAspectRatio="none"><path d="M0 110 C30 25 55 195 90 110 S150 35 190 110 S250 185 290 110 S350 35 395 110 S455 185 500 110 S565 35 600 110"/></svg>
+            <div class="instrument-flow"><span>INPUT</span><i></i><span>MODEL</span><i></i><span>ACTION</span></div>
+          </div>
+          <div class="instrument-copy">
+            <p class="overline" id="instrument-domain">Semiconductor analytics</p>
+            <h3 id="instrument-title">WaferPulse</h3>
+            <p id="instrument-summary">An explainable quality-risk workflow connecting equipment traces, statistical controls and model evidence.</p>
+            <div class="instrument-proof"><strong id="instrument-metric">0.8006</strong><span id="instrument-caption">R² · wafer-average benchmark</span></div>
+            <div class="instrument-stack" id="instrument-stack"><span>SPC</span><span>PSI</span><span>SHAP</span><span>STREAMLIT</span></div>
+            <a id="instrument-link" href="https://waferpulse.streamlit.app/" target="_blank" rel="noreferrer">Open live system ↗</a>
+          </div>
+        </article>
+      </div>
+
+      <div class="systems-strip reveal" aria-label="Additional project archive">
+        <span>ALSO EXPLORED</span><p>Fuzzy demand-side management</p><p>LabVIEW hydroelectric monitoring</p><p>Harvest Hub aquaponics</p><p>Student semester planner</p>
+      </div>
+    </section>
+
     <section class="project" id="project">
       <div class="gate-layout">
         <div class="gate-copy reveal"><p class="overline">Final Year Project / flagship case</p><h2>Not a pipeline.<br><span>A decision gate.</span></h2><p>Identify high-risk wafers before packaging—and keep the engineering judgement traceable.</p><div class="gate-metric"><b data-count="7581">0</b><span>R² / EARLY FINAL-TEST<br>YIELD PREDICTION</span></div><a class="project-link" href="https://waferpulse.streamlit.app/" target="_blank" rel="noreferrer"><span>Launch live system</span><b>WaferPulse ↗</b><small>Interactive Streamlit application</small></a></div>
@@ -96,7 +141,7 @@
     </section>
 
     <section class="section swot" id="swot">
-      <div class="section-index"><span>03</span><p>CRITICAL SWOT</p></div>
+      <div class="section-index"><span>04</span><p>CRITICAL SWOT</p></div>
       <div class="swot-head reveal"><p class="overline">Honest self-evaluation</p><h2>Four forces.<br><em>One response.</em></h2><p>A decision matrix that turns each observation into an action.</p></div>
       <div class="swot-map reveal signal-sequence">
         <span class="axis-label internal">INTERNAL</span><span class="axis-label external">EXTERNAL</span><span class="axis-label helpful">HELPFUL</span><span class="axis-label harmful">HARMFUL</span>
@@ -109,7 +154,7 @@
     </section>
 
     <section class="section outcomes" id="outcomes">
-      <div class="section-index"><span>04</span><p>PO ATTAINMENT</p></div>
+      <div class="section-index"><span>05</span><p>PO ATTAINMENT</p></div>
       <div class="outcome-hero reveal"><p class="overline">Reflection / evidence / action</p><h2>Evidence in.<br><em>Action out.</em></h2><p>Each outcome connects experience to one deliberate next move.</p></div>
       <div class="outcome-map reveal signal-sequence">
         <i class="outcome-ring outer"></i><i class="outcome-ring inner"></i><div class="outcome-core"><small>REFLECT</small><b>EVIDENCE<br>→ ACTION</b></div>
@@ -121,7 +166,7 @@
     </section>
 
     <section class="section conclusion" id="conclusion">
-      <div class="section-index"><span>05</span><p>CONCLUSION</p></div>
+      <div class="section-index"><span>06</span><p>CONCLUSION</p></div>
       <div class="conclusion-grid reveal"><h2>Ready to contribute.<br><em>Committed to evolve.</em></h2><div><p>My degree has shaped a professional identity grounded in evidence, ethical responsibility, inclusive teamwork and honest reflection.</p><p>I am ready to enter engineering as an independent learner who engages with emerging technology without treating novelty as proof of value.</p><blockquote>Keep learning. Make assumptions visible. Leave every system more reliable than I found it.</blockquote></div></div>
     </section>
 
