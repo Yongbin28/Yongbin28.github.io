@@ -40,3 +40,24 @@ const countObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.
 document.querySelectorAll('.year-card,.swot-card').forEach(card=>card.addEventListener('pointermove',e=>{if(reduced||innerWidth<900)return;const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(800px) rotateX(${-y*3}deg) rotateY(${x*3}deg) translateY(-6px)`}));
 document.querySelectorAll('.year-card,.swot-card').forEach(card=>card.addEventListener('pointerleave',()=>card.style.transform=''));
 
+const systemData={
+  wafer:{index:'INSTRUMENT 01 / QUALITY GATE',domain:'Semiconductor analytics',title:'WaferPulse',summary:'An explainable quality-risk workflow connecting equipment traces, statistical controls and model evidence.',metric:'0.8006',caption:'R² · wafer-average benchmark',stack:['SPC','PSI','SHAP','STREAMLIT'],link:'https://waferpulse.streamlit.app/',linkText:'Open live system ↗',mode:'wafer'},
+  etap:{index:'INSTRUMENT 02 / GRID STUDY',domain:'Power systems',title:'ETAP Network Study',summary:'A contingency-led power-flow study that tested cable loading, bus capacity, voltage and source power factor.',metric:'88.5%',caption:'reported cable loading after upgrade',stack:['ETAP','LOAD FLOW','CONTINGENCY','HANDOVER'],mode:'etap'},
+  micro:{index:'INSTRUMENT 03 / EMBEDDED CONTROL',domain:'Smart microgrid ecosystem',title:'Gravity Battery',summary:'An embedded energy-storage prototype integrating position safety, energy tracking, fuzzy control and real-time logging.',metric:'MQTT',caption:'connected control and data exchange',stack:['ESP32','INA219','NODE-RED','FUZZY LOGIC'],mode:'micro'},
+  speech:{index:'INSTRUMENT 04 / SIGNAL LAB',domain:'Digital signal processing',title:'Speech Enhancement',summary:'A MATLAB workbench comparing classical, adaptive and neural approaches across controlled noise conditions.',metric:'05',caption:'enhancement methods compared',stack:['WIENER','MMSE','NLMS','CNN','IIR'],mode:'speech'},
+  piezo:{index:'INSTRUMENT 05 / ENERGY CONVERSION',domain:'Power electronics',title:'Piezo Energy Harvester',summary:'A two-stage harvesting circuit combining a Cockcroft–Walton voltage doubler with a boost converter.',metric:'02',caption:'conversion stages modelled',stack:['LTSPICE','SIMULINK','VOLTAGE DOUBLER','BOOST'],mode:'piezo'},
+  energy:{index:'INSTRUMENT 06 / SOFTWARE TOOL',domain:'Engineering software',title:'Smart Energy Monitor',summary:'A MATLAB application for device records, consumption visualisation, forecasting, home layout and solar simulation.',metric:'ARIMA',caption:'usage forecasting workflow',stack:['MATLAB','APP DESIGNER','FORECAST','SIMULINK'],mode:'energy'}
+};
+const instrument=document.querySelector('#system-instrument');
+if(instrument){
+  const fields={index:document.querySelector('#instrument-index'),domain:document.querySelector('#instrument-domain'),title:document.querySelector('#instrument-title'),summary:document.querySelector('#instrument-summary'),metric:document.querySelector('#instrument-metric'),caption:document.querySelector('#instrument-caption'),stack:document.querySelector('#instrument-stack'),link:document.querySelector('#instrument-link')};
+  document.querySelectorAll('.atlas-node').forEach(button=>button.addEventListener('click',()=>{
+    const data=systemData[button.dataset.system];if(!data)return;
+    document.querySelectorAll('.atlas-node').forEach(node=>{const active=node===button;node.classList.toggle('active',active);node.setAttribute('aria-pressed',String(active))});
+    instrument.className=`system-instrument mode-${data.mode}`;
+    fields.index.textContent=data.index;fields.domain.textContent=data.domain;fields.title.textContent=data.title;fields.summary.textContent=data.summary;fields.metric.textContent=data.metric;fields.caption.textContent=data.caption;
+    fields.stack.innerHTML=data.stack.map(item=>`<span>${item}</span>`).join('');
+    if(data.link){fields.link.hidden=false;fields.link.href=data.link;fields.link.textContent=data.linkText}else{fields.link.hidden=true;fields.link.removeAttribute('href')}
+  }));
+}
+
