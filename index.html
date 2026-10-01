@@ -11,9 +11,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="styles.css?v=3">
-  <link rel="preload" href="systems.css?v=3" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="systems.css?v=3"></noscript>
+  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="preload" href="systems.css?v=4" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="systems.css?v=4"></noscript>
 </head>
 <body>
   <div class="progress" aria-hidden="true"><i></i></div>
@@ -22,7 +22,7 @@
     <a class="brand" href="#top"><b>LYB</b><span>Wafer Lab / Portfolio</span></a>
     <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav">
-      <a href="#profile">Profile</a><a href="#journey">Journey</a><a href="#systems">Systems</a><a href="#project">FYP</a><a href="#swot">SWOT</a><a href="#outcomes">Outcomes</a>
+      <a href="#profile">Profile</a><a href="#journey">Journey</a><a href="#evidence">Evidence</a><a href="#systems">Systems</a><a href="#project">FYP</a><a href="#swot">SWOT</a><a href="#outcomes">Outcomes</a>
       <a class="resume" href="assets/Resume-Lek-Yong-Bin.pdf" target="_blank">Resume ↗</a>
     </nav>
   </header>
@@ -82,8 +82,42 @@
       </div>
     </section>
 
+    <section class="section evidence" id="evidence">
+      <div class="section-index"><span>03</span><p>PROFESSIONAL EVIDENCE</p></div>
+      <div class="evidence-head reveal">
+        <div><p class="overline">Three placements / increasing responsibility</p><h2>Learning moved<br><em>closer to consequence.</em></h2></div>
+        <p>Each placement changed how I define good engineering: first as accurate documentation, then as traceable production information, and finally as decisions that affect semiconductor yield and scrap risk.</p>
+      </div>
+      <div class="placement-ledger signal-sequence">
+        <article class="placement reveal">
+          <header><span>01 / 2024</span><b>PERUNDING ACE</b><small>Project Engineering Intern · Johor Bahru</small></header>
+          <h3>Designed within constraints.</h3>
+          <p>Prepared electrical and telecommunication layouts in AutoCAD against client requirements and project limitations.</p>
+          <dl><div><dt>CONTRIBUTION</dt><dd>Converted requirements into coordinated drawing information.</dd></div><div><dt>PROFESSIONAL LESSON</dt><dd>A drawing is an agreement: accuracy, revision discipline and clear assumptions matter.</dd></div></dl>
+        </article>
+        <article class="placement reveal">
+          <header><span>02 / 2024–25</span><b>KEYSTONE CABLE</b><small>Production Engineering Intern · Singapore</small></header>
+          <h3>Connected people, data and flow.</h3>
+          <p>Developed an RFID user-management workflow using Node-RED, PostgreSQL and MQTT, then studied production lead time and process bottlenecks.</p>
+          <dl><div><dt>CONTRIBUTION</dt><dd>Structured relational data for stronger consistency and operator traceability.</dd></div><div><dt>PROFESSIONAL LESSON</dt><dd>A working prototype becomes valuable only when operators can trust the data behind it.</dd></div></dl>
+        </article>
+        <article class="placement feature reveal">
+          <header><span>03 / 2025–26</span><b>ANALOG DEVICES</b><small>Product Engineering Intern · Trim &amp; Probe</small></header>
+          <h3>Turned test data into engineering judgement.</h3>
+          <p>Investigated wafer-level yield and bin shifts with SPC and PSI, automated cross-platform DLog decoding, and supported correlation testing across 53 products.</p>
+          <dl><div><dt>CONTRIBUTION</dt><dd>Built the foundation of a predictive Wafer Quality Gate with a 0.7581 R² early-yield model.</dd></div><div><dt>PROFESSIONAL LESSON</dt><dd>A model does not replace review; it must expose evidence, uncertainty and the path to a decision.</dd></div></dl>
+        </article>
+      </div>
+      <div class="evidence-rail reveal">
+        <div><span>RESEARCH</span><b>2 journal manuscripts submitted</b><p>Hybrid-energy optimisation review and parcel-delivery resource sharing; co-author, not yet claimed as published.</p></div>
+        <div><span>PUBLIC IMPACT</span><b>MCMC research assistant</b><p>Contributed to industry-facing research on Malaysia’s parcel-delivery resource readiness.</p></div>
+        <div><span>RECOGNITION</span><b>2 Gold · Top 8 · 3 Dean’s Lists</b><p>Innovation awards became checkpoints for communication, validation and multidisciplinary teamwork.</p></div>
+        <div><span>CPD</span><b>Lean Six Sigma Green Belt</b><p>Formalised a process-improvement mindset around variation, evidence and measurable change.</p></div>
+      </div>
+    </section>
+
     <section class="section systems" id="systems">
-      <div class="section-index"><span>03</span><p>SELECTED SYSTEMS</p></div>
+      <div class="section-index"><span>04</span><p>SELECTED SYSTEMS</p></div>
       <div class="systems-head reveal">
         <div><p class="overline">Engineering atlas / 2023—2026</p><h2>One engineer.<br><em>Many signals.</em></h2></div>
         <p>Explore the systems behind the résumé. Each node connects a real engineering constraint to the tool, model or control strategy I used to investigate it.</p>
@@ -114,6 +148,12 @@
             <p class="overline" id="instrument-domain">Semiconductor analytics</p>
             <h3 id="instrument-title">WaferPulse</h3>
             <p id="instrument-summary">An explainable quality-risk workflow connecting equipment traces, statistical controls and model evidence.</p>
+            <div class="instrument-dossier">
+              <div><span>QUESTION</span><p id="instrument-question">Can high-risk wafers be identified before packaging adds more cost?</p></div>
+              <div><span>MY BUILD</span><p id="instrument-build">A staged workflow combining data checks, SPC/PSI monitoring, anomaly detection, yield prediction and SHAP review.</p></div>
+              <div><span>EVIDENCE</span><p id="instrument-evidence">0.7581 R² for early final-test yield prediction; 0.8006 R² at wafer-average benchmark level.</p></div>
+              <div><span>REFLECTION</span><p id="instrument-reflection">Useful automation must keep the engineer in the loop and make uncertainty visible.</p></div>
+            </div>
             <div class="instrument-proof"><strong id="instrument-metric">0.8006</strong><span id="instrument-caption">R² · wafer-average benchmark</span></div>
             <div class="instrument-stack" id="instrument-stack"><span>SPC</span><span>PSI</span><span>SHAP</span><span>STREAMLIT</span></div>
             <a id="instrument-link" href="https://waferpulse.streamlit.app/" target="_blank" rel="noreferrer">Open live system ↗</a>
@@ -140,23 +180,29 @@
         </div>
       </div>
       <div class="result-grid reveal"><article><strong>7581</strong><span>R² · EARLY YIELD PREDICTION</span></article><article><strong>EARLIER</strong><span>ABNORMAL-WAFER VISIBILITY</span></article><article><strong>TRACEABLE</strong><span>MODEL-TO-DECISION LOGIC</span></article></div>
+      <div class="case-notes reveal">
+        <article><span>01 / PROBLEM</span><h3>Packaging commits cost before final-test risk is fully visible.</h3><p>I reframed prediction as a quality gate: not “What will the model score?”, but “What evidence should trigger engineering review before value is added?”</p></article>
+        <article><span>02 / DATA DISCIPLINE</span><h3>Bad inputs create confident mistakes.</h3><p>The workflow begins with probe-result integrity, feature correlation and distribution-shift checks. SPC and PSI distinguish ordinary variation from a population that may no longer resemble the training data.</p></article>
+        <article><span>03 / MULTI-EVIDENCE</span><h3>No single model owns the decision.</h3><p>GDBN wafer-map patterns provide spatial evidence, the regression model estimates downstream yield, and SHAP identifies the features driving each prediction.</p></article>
+        <article><span>04 / LIMITATION</span><h3>Validation must continue across products and time.</h3><p>The current result demonstrates feasibility, not universal reliability. Next steps are product-family validation, calibrated uncertainty, drift monitoring and explicit review thresholds.</p></article>
+      </div>
     </section>
 
     <section class="section swot" id="swot">
-      <div class="section-index"><span>04</span><p>CRITICAL SWOT</p></div>
+      <div class="section-index"><span>05</span><p>CRITICAL SWOT</p></div>
       <div class="swot-head reveal"><p class="overline">Honest self-evaluation</p><h2>Four forces.<br><em>One response.</em></h2><p>A decision matrix that turns each observation into an action.</p></div>
       <div class="swot-map reveal signal-sequence">
         <span class="axis-label internal">INTERNAL</span><span class="axis-label external">EXTERNAL</span><span class="axis-label helpful">HELPFUL</span><span class="axis-label harmful">HARMFUL</span>
         <i class="swot-axis horizontal"></i><i class="swot-axis vertical"></i>
-        <article class="swot-quadrant s" tabindex="0"><b>S</b><div><small>STRENGTH</small><h3>Evidence-led judgement</h3><p>SPC, PSI and explainable models.</p><strong>USE / Lead with a transparent evidence chain.</strong></div></article>
-        <article class="swot-quadrant w" tabindex="0"><b>W</b><div><small>WEAKNESS</small><h3>Breadth needs depth</h3><p>Device physics and experimental design.</p><strong>BUILD / Structured monthly validation practice.</strong></div></article>
-        <article class="swot-quadrant o" tabindex="0"><b>O</b><div><small>OPPORTUNITY</small><h3>AI-enabled manufacturing</h3><p>Earlier risk visibility with human oversight.</p><strong>PURSUE / Cross-product validation and drift monitoring.</strong></div></article>
-        <article class="swot-quadrant t" tabindex="0"><b>T</b><div><small>THREAT</small><h3>Automation bias</h3><p>Confident models can still be wrong.</p><strong>CONTROL / State uncertainty and require review.</strong></div></article>
+        <article class="swot-quadrant s" tabindex="0"><b>S</b><div><small>STRENGTH</small><h3>Evidence-led judgement</h3><p>Internship work connected SPC, PSI, test logs and explainable models to real production questions.</p><strong>USE / Present conclusions as an auditable evidence chain, not a black-box score.</strong></div></article>
+        <article class="swot-quadrant w" tabindex="0"><b>W</b><div><small>WEAKNESS</small><h3>Breadth still needs depth</h3><p>I can integrate systems quickly, but device physics, designed experiments and long-horizon validation need deeper practice.</p><strong>BUILD / Complete one structured validation study each month and seek technical review.</strong></div></article>
+        <article class="swot-quadrant o" tabindex="0"><b>O</b><div><small>OPPORTUNITY</small><h3>AI-enabled manufacturing</h3><p>Semiconductor teams need earlier risk visibility without losing process knowledge or human accountability.</p><strong>PURSUE / Validate across product families and build drift, uncertainty and review controls.</strong></div></article>
+        <article class="swot-quadrant t" tabindex="0"><b>T</b><div><small>THREAT</small><h3>Automation bias and data shift</h3><p>A persuasive dashboard can hide weak assumptions, changed populations or incomplete product context.</p><strong>CONTROL / State limitations, monitor distribution change and require engineer sign-off.</strong></div></article>
       </div>
     </section>
 
     <section class="section outcomes" id="outcomes">
-      <div class="section-index"><span>05</span><p>PO ATTAINMENT</p></div>
+      <div class="section-index"><span>06</span><p>PO ATTAINMENT</p></div>
       <div class="outcome-hero reveal"><p class="overline">Reflection / evidence / action</p><h2>Evidence in.<br><em>Action out.</em></h2><p>Each outcome connects experience to one deliberate next move.</p></div>
       <div class="outcome-map reveal signal-sequence">
         <i class="outcome-ring outer"></i><i class="outcome-ring inner"></i><div class="outcome-core"><small>REFLECT</small><b>EVIDENCE<br>→ ACTION</b></div>
@@ -165,17 +211,23 @@
         <article class="outcome-node ct"><b>CT</b><h3>Critical thinking</h3><p>Model output challenged with production context.</p><small>NEXT / Report uncertainty explicitly.</small></article>
         <article class="outcome-node ii"><b>II</b><h3>Inclusive impact</h3><p>Multicultural and sustainability experience.</p><small>NEXT / Quantify whole-life impact.</small></article>
       </div>
+      <div class="attainment-ledger reveal">
+        <article><header><b>PO8</b><span>PROFESSIONALISM &amp; INCLUSIVE PRACTICE</span></header><div><h3>Evidence</h3><p>Three placements exposed me to client coordination, production operators and multidisciplinary product-engineering work across Malaysia and Singapore.</p></div><div><h3>Evaluation</h3><p>I progressed from completing assigned technical work to considering traceability, data integrity, safety and how another person will use my output.</p></div><div><h3>Gap → action</h3><p>I have not yet owned a product through its full lifecycle. My next role should include requirements, validation, handover and post-release learning.</p></div></article>
+        <article><header><b>PO11</b><span>INDEPENDENT &amp; LIFE-LONG LEARNING</span></header><div><h3>Evidence</h3><p>I independently transferred learning across AutoCAD, Node-RED/PostgreSQL/MQTT, MATLAB, ETAP and semiconductor analytics, supported by Lean Six Sigma certification and research work.</p></div><div><h3>Evaluation</h3><p>My strongest learning pattern is building an end-to-end prototype, then testing it against a real constraint. This adaptability enabled seven projects across different domains.</p></div><div><h3>Gap → action</h3><p>Breadth can become shallow. I will maintain a quarterly evidence log and deepen one theme at a time through experiments, peer review and reproducible documentation.</p></div></article>
+        <article><header><b>CT</b><span>CRITICAL THINKING &amp; EMERGING TECHNOLOGY</span></header><div><h3>Evidence</h3><p>WaferPulse combines shift detection, spatial anomaly evidence, prediction and explainability instead of relying on one algorithm.</p></div><div><h3>Evaluation</h3><p>I now separate technical novelty from engineering value: a method matters only when its assumptions, failure modes and decision role are understood.</p></div><div><h3>Gap → action</h3><p>Add confidence intervals, out-of-distribution tests and documented model-review criteria before treating predictions as operational evidence.</p></div></article>
+        <article><header><b>II</b><span>INCLUSIVE &amp; SUSTAINABLE IMPACT</span></header><div><h3>Evidence</h3><p>Multicultural placements, energy-system projects and resource-sharing research broadened my view beyond technical performance alone.</p></div><div><h3>Evaluation</h3><p>Good engineering must also consider who operates the system, what resources it consumes, and whether benefits and risks are communicated accessibly.</p></div><div><h3>Gap → action</h3><p>Quantify energy, material, whole-life cost and user impact in future design reviews rather than leaving sustainability as a qualitative claim.</p></div></article>
+      </div>
     </section>
 
     <section class="section conclusion" id="conclusion">
-      <div class="section-index"><span>06</span><p>CONCLUSION</p></div>
+      <div class="section-index"><span>07</span><p>CONCLUSION</p></div>
       <div class="conclusion-grid reveal"><h2>Ready to contribute.<br><em>Committed to evolve.</em></h2><div><p>My degree has shaped a professional identity grounded in evidence, ethical responsibility, inclusive teamwork and honest reflection.</p><p>I am ready to enter engineering as an independent learner who engages with emerging technology without treating novelty as proof of value.</p><blockquote>Keep learning. Make assumptions visible. Leave every system more reliable than I found it.</blockquote></div></div>
     </section>
 
     <section class="contact"><div><p class="overline">Next signal</p><h2>Let’s build<br>reliable systems.</h2></div><div class="contact-links"><a href="mailto:yblek1028@gmail.com">yblek1028@gmail.com ↗</a><a href="https://www.linkedin.com/in/yong-bin-lek" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="assets/Resume-Lek-Yong-Bin.pdf" target="_blank">Resume ↗</a></div></section>
   </main>
   <footer><span>LEK YONG BIN · 2026</span><span>ELECTRICAL &amp; ELECTRONIC ENGINEERING</span><a href="#top">BACK TO TOP ↑</a></footer>
-  <script src="script.js?v=3" defer></script>
+  <script src="script.js?v=4" defer></script>
 </body>
 </html>
 
