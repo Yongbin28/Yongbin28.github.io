@@ -9,15 +9,17 @@
   <title>Lek Yong Bin · Engineering E-Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="systems.css">
+  <link rel="preload" href="systems.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="systems.css"></noscript>
 </head>
 <body>
   <div class="progress" aria-hidden="true"><i></i></div>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-head">
-    <a class="brand" href="#top" aria-label="Home"><b>LYB</b><span>Wafer Lab / Portfolio</span></a>
+    <a class="brand" href="#top"><b>LYB</b><span>Wafer Lab / Portfolio</span></a>
     <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav">
       <a href="#profile">Profile</a><a href="#journey">Journey</a><a href="#systems">Systems</a><a href="#project">FYP</a><a href="#swot">SWOT</a><a href="#outcomes">Outcomes</a>
@@ -91,22 +93,22 @@
         <div class="systems-atlas" aria-label="Interactive atlas of selected engineering projects">
           <div class="atlas-orbit orbit-one" aria-hidden="true"></div><div class="atlas-orbit orbit-two" aria-hidden="true"></div><div class="atlas-orbit orbit-three" aria-hidden="true"></div>
           <svg class="atlas-lines" viewBox="0 0 760 650" preserveAspectRatio="none" aria-hidden="true"><path d="M380 325L132 112M380 325L620 105M380 325L690 322M380 325L592 552M380 325L162 555M380 325L72 325"/></svg>
-          <div class="atlas-core"><span>SEMICONDUCTOR</span><b>Wafer<br>Pulse</b><small>Quality AI</small></div>
+          <button class="atlas-core atlas-select active" type="button" data-system="wafer" aria-controls="system-instrument" aria-pressed="true"><span>SEMICONDUCTOR</span><b>Wafer<br>Pulse</b><small>Quality AI</small></button>
           <button class="atlas-node node-etap" type="button" data-system="etap" aria-controls="system-instrument"><i></i><small>POWER</small><b>ETAP Network Study</b></button>
           <button class="atlas-node node-micro" type="button" data-system="micro" aria-controls="system-instrument"><i></i><small>EMBEDDED</small><b>Gravity Battery</b></button>
           <button class="atlas-node node-speech" type="button" data-system="speech" aria-controls="system-instrument"><i></i><small>SIGNAL</small><b>Speech Enhancement</b></button>
           <button class="atlas-node node-piezo" type="button" data-system="piezo" aria-controls="system-instrument"><i></i><small>POWER ELECTRONICS</small><b>Energy Harvester</b></button>
           <button class="atlas-node node-energy" type="button" data-system="energy" aria-controls="system-instrument"><i></i><small>SOFTWARE</small><b>Energy Monitor</b></button>
-          <button class="atlas-node node-wafer active" type="button" data-system="wafer" aria-controls="system-instrument" aria-pressed="true"><i></i><small>FLAGSHIP</small><b>WaferPulse</b></button>
+          <button class="atlas-node node-demand" type="button" data-system="demand" aria-controls="system-instrument" aria-pressed="false"><i></i><small>CONTROL</small><b>Demand Response</b></button>
           <div class="atlas-hint"><span></span>SELECT A SIGNAL</div>
         </div>
 
-        <article class="system-instrument mode-wafer" id="system-instrument" aria-live="polite">
+        <article class="system-instrument mode-wafer" id="system-instrument" aria-live="polite" aria-atomic="true">
           <header><span id="instrument-index">INSTRUMENT 01 / QUALITY GATE</span><i></i></header>
           <div class="instrument-screen" aria-hidden="true">
             <div class="instrument-grid"></div><div class="instrument-wafer"><i></i><i></i><i></i></div>
             <svg class="instrument-wave" viewBox="0 0 600 220" preserveAspectRatio="none"><path d="M0 110 C30 25 55 195 90 110 S150 35 190 110 S250 185 290 110 S350 35 395 110 S455 185 500 110 S565 35 600 110"/></svg>
-            <div class="instrument-flow"><span>INPUT</span><i></i><span>MODEL</span><i></i><span>ACTION</span></div>
+            <div class="instrument-flow"><span id="flow-one">INPUT</span><i></i><span id="flow-two">MODEL</span><i></i><span id="flow-three">ACTION</span></div>
           </div>
           <div class="instrument-copy">
             <p class="overline" id="instrument-domain">Semiconductor analytics</p>
@@ -173,7 +175,7 @@
     <section class="contact"><div><p class="overline">Next signal</p><h2>Let’s build<br>reliable systems.</h2></div><div class="contact-links"><a href="mailto:yblek1028@gmail.com">yblek1028@gmail.com ↗</a><a href="https://www.linkedin.com/in/yong-bin-lek" target="_blank" rel="noreferrer">LinkedIn ↗</a><a href="assets/Resume-Lek-Yong-Bin.pdf" target="_blank">Resume ↗</a></div></section>
   </main>
   <footer><span>LEK YONG BIN · 2026</span><span>ELECTRICAL &amp; ELECTRONIC ENGINEERING</span><a href="#top">BACK TO TOP ↑</a></footer>
-  <script src="script.js"></script>
+  <script src="script.js" defer></script>
 </body>
 </html>
 
