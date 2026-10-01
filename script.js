@@ -1,13 +1,16 @@
 const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 const hero=document.querySelector('.hero');
-if(reduced) hero.classList.add('hero-live');
+let bootSeen=false;try{bootSeen=sessionStorage.getItem('lyb-boot-seen')==='1'}catch{}
+const showBoot=!reduced&&!location.hash&&!bootSeen;
+if(!showBoot) hero.classList.add('hero-live');
 else{
   const boot=document.createElement('div');
   boot.className='motion-boot';boot.setAttribute('aria-hidden','true');
   boot.innerHTML='<div class="boot-door"></div><div class="boot-door"></div><div class="boot-console"><div class="boot-status"><b>LYB / WAFER LAB</b><span>SYSTEM INITIALISING</span></div><div class="boot-dies">'+Array.from({length:45},(_,i)=>`<i class="boot-die" style="--i:${i}"></i>`).join('')+'</div><div class="boot-rail"><i></i></div></div>';
   document.body.prepend(boot);document.body.style.overflow='hidden';
-  setTimeout(()=>{boot.classList.add('exit');hero.classList.add('hero-live');document.body.style.overflow=''},1250);
-  setTimeout(()=>boot.remove(),2050);
+  try{sessionStorage.setItem('lyb-boot-seen','1')}catch{}
+  setTimeout(()=>{boot.classList.add('exit');hero.classList.add('hero-live');document.body.style.overflow=''},900);
+  setTimeout(()=>boot.remove(),1600);
 }
 const menu=document.querySelector('.menu'),nav=document.querySelector('#nav');
 menu.addEventListener('click',()=>{const open=nav.classList.toggle('open');menu.setAttribute('aria-expanded',open)});
@@ -41,23 +44,33 @@ document.querySelectorAll('.year-card,.swot-card').forEach(card=>card.addEventLi
 document.querySelectorAll('.year-card,.swot-card').forEach(card=>card.addEventListener('pointerleave',()=>card.style.transform=''));
 
 const systemData={
-  wafer:{index:'INSTRUMENT 01 / QUALITY GATE',domain:'Semiconductor analytics',title:'WaferPulse',summary:'An explainable quality-risk workflow connecting equipment traces, statistical controls and model evidence.',metric:'0.8006',caption:'R² · wafer-average benchmark',stack:['SPC','PSI','SHAP','STREAMLIT'],link:'https://waferpulse.streamlit.app/',linkText:'Open live system ↗',mode:'wafer'},
-  etap:{index:'INSTRUMENT 02 / GRID STUDY',domain:'Power systems',title:'ETAP Network Study',summary:'A contingency-led power-flow study that tested cable loading, bus capacity, voltage and source power factor.',metric:'88.5%',caption:'reported cable loading after upgrade',stack:['ETAP','LOAD FLOW','CONTINGENCY','HANDOVER'],mode:'etap'},
-  micro:{index:'INSTRUMENT 03 / EMBEDDED CONTROL',domain:'Smart microgrid ecosystem',title:'Gravity Battery',summary:'An embedded energy-storage prototype integrating position safety, energy tracking, fuzzy control and real-time logging.',metric:'MQTT',caption:'connected control and data exchange',stack:['ESP32','INA219','NODE-RED','FUZZY LOGIC'],mode:'micro'},
-  speech:{index:'INSTRUMENT 04 / SIGNAL LAB',domain:'Digital signal processing',title:'Speech Enhancement',summary:'A MATLAB workbench comparing classical, adaptive and neural approaches across controlled noise conditions.',metric:'05',caption:'enhancement methods compared',stack:['WIENER','MMSE','NLMS','CNN','IIR'],mode:'speech'},
-  piezo:{index:'INSTRUMENT 05 / ENERGY CONVERSION',domain:'Power electronics',title:'Piezo Energy Harvester',summary:'A two-stage harvesting circuit combining a Cockcroft–Walton voltage doubler with a boost converter.',metric:'02',caption:'conversion stages modelled',stack:['LTSPICE','SIMULINK','VOLTAGE DOUBLER','BOOST'],mode:'piezo'},
-  energy:{index:'INSTRUMENT 06 / SOFTWARE TOOL',domain:'Engineering software',title:'Smart Energy Monitor',summary:'A MATLAB application for device records, consumption visualisation, forecasting, home layout and solar simulation.',metric:'ARIMA',caption:'usage forecasting workflow',stack:['MATLAB','APP DESIGNER','FORECAST','SIMULINK'],mode:'energy'}
+  wafer:{index:'INSTRUMENT 01 / QUALITY GATE',domain:'Semiconductor analytics',title:'WaferPulse',summary:'An explainable quality-risk workflow connecting equipment traces, statistical controls and model evidence.',metric:'0.8006',caption:'R² · wafer-average benchmark',stack:['SPC','PSI','SHAP','STREAMLIT'],link:'https://waferpulse.streamlit.app/',linkText:'Open live system ↗',mode:'wafer',flow:['TRACE','MODEL','ACTION']},
+  etap:{index:'INSTRUMENT 02 / GRID STUDY',domain:'Power systems',title:'ETAP Network Study',summary:'A contingency-led power-flow study that tested cable loading, bus capacity, voltage and source power factor.',metric:'88.5%',caption:'reported cable loading after upgrade',stack:['ETAP','LOAD FLOW','CONTINGENCY','HANDOVER'],mode:'etap',flow:['GRID','CABLE','BUS']},
+  micro:{index:'INSTRUMENT 03 / EMBEDDED CONTROL',domain:'Smart microgrid ecosystem',title:'Gravity Battery',summary:'An embedded energy-storage prototype integrating position safety, energy tracking, fuzzy control and real-time logging.',metric:'MQTT',caption:'connected control and data exchange',stack:['ESP32','INA219','NODE-RED','FUZZY LOGIC'],mode:'micro',flow:['SENSOR','MQTT','DASHBOARD']},
+  speech:{index:'INSTRUMENT 04 / SIGNAL LAB',domain:'Digital signal processing',title:'Speech Enhancement',summary:'A MATLAB workbench comparing classical, adaptive and neural approaches across controlled noise conditions.',metric:'05',caption:'enhancement methods compared',stack:['WIENER','MMSE','NLMS','CNN','IIR'],mode:'speech',flow:['NOISY','FILTER','SPEECH']},
+  piezo:{index:'INSTRUMENT 05 / ENERGY CONVERSION',domain:'Power electronics',title:'Piezo Energy Harvester',summary:'A two-stage harvesting circuit combining a Cockcroft–Walton voltage doubler with a boost converter.',metric:'02',caption:'conversion stages modelled',stack:['LTSPICE','SIMULINK','VOLTAGE DOUBLER','BOOST'],mode:'piezo',flow:['PIEZO','DOUBLER','BOOST']},
+  energy:{index:'INSTRUMENT 06 / SOFTWARE TOOL',domain:'Engineering software',title:'Smart Energy Monitor',summary:'A MATLAB application for device records, consumption visualisation, forecasting, home layout and solar simulation.',metric:'ARIMA',caption:'usage forecasting workflow',stack:['MATLAB','APP DESIGNER','FORECAST','SIMULINK'],mode:'energy',flow:['DEVICE','FORECAST','SOLAR']},
+  demand:{index:'INSTRUMENT 07 / ADAPTIVE CONTROL',domain:'Demand-side management',title:'Demand Response',summary:'A fuzzy-logic scheme relating load demand, time of day and distributed energy resources to suggested load reduction.',metric:'FUZZY',caption:'adaptive load-management logic',stack:['MATLAB','FUZZY LOGIC','DER','LOAD SHIFTING'],mode:'demand',flow:['DEMAND','FUZZY','REDUCE']}
 };
 const instrument=document.querySelector('#system-instrument');
 if(instrument){
-  const fields={index:document.querySelector('#instrument-index'),domain:document.querySelector('#instrument-domain'),title:document.querySelector('#instrument-title'),summary:document.querySelector('#instrument-summary'),metric:document.querySelector('#instrument-metric'),caption:document.querySelector('#instrument-caption'),stack:document.querySelector('#instrument-stack'),link:document.querySelector('#instrument-link')};
-  document.querySelectorAll('.atlas-node').forEach(button=>button.addEventListener('click',()=>{
+  const fields={index:document.querySelector('#instrument-index'),domain:document.querySelector('#instrument-domain'),title:document.querySelector('#instrument-title'),summary:document.querySelector('#instrument-summary'),metric:document.querySelector('#instrument-metric'),caption:document.querySelector('#instrument-caption'),stack:document.querySelector('#instrument-stack'),link:document.querySelector('#instrument-link'),flow:[document.querySelector('#flow-one'),document.querySelector('#flow-two'),document.querySelector('#flow-three')]};
+  const selectors=[...document.querySelectorAll('.atlas-node,.atlas-select')];
+  selectors.forEach(button=>button.addEventListener('click',()=>{
     const data=systemData[button.dataset.system];if(!data)return;
-    document.querySelectorAll('.atlas-node').forEach(node=>{const active=node===button;node.classList.toggle('active',active);node.setAttribute('aria-pressed',String(active))});
+    selectors.forEach(node=>{const active=node===button;node.classList.toggle('active',active);node.setAttribute('aria-pressed',String(active))});
     instrument.className=`system-instrument mode-${data.mode}`;
     fields.index.textContent=data.index;fields.domain.textContent=data.domain;fields.title.textContent=data.title;fields.summary.textContent=data.summary;fields.metric.textContent=data.metric;fields.caption.textContent=data.caption;
     fields.stack.innerHTML=data.stack.map(item=>`<span>${item}</span>`).join('');
+    fields.flow.forEach((field,index)=>field.textContent=data.flow[index]);
     if(data.link){fields.link.hidden=false;fields.link.href=data.link;fields.link.textContent=data.linkText}else{fields.link.hidden=true;fields.link.removeAttribute('href')}
   }));
+}
+
+const sectionLinks=[...document.querySelectorAll('#nav a[href^="#"]')];
+const linkedSections=sectionLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){
+  const navObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(!entry.isIntersecting)return;sectionLinks.forEach(link=>{const active=link.getAttribute('href')===`#${entry.target.id}`;link.classList.toggle('current',active);if(active)link.setAttribute('aria-current','location');else link.removeAttribute('aria-current')})}),{rootMargin:'-25% 0px -65%',threshold:0});
+  linkedSections.forEach(section=>navObserver.observe(section));
 }
 
