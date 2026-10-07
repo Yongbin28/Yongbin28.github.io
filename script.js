@@ -38,13 +38,13 @@ function draw(time=0){ctx.clearRect(0,0,width,height);const cx=width*.51,cy=heig
 resize();addEventListener('resize',resize);if(reduced)draw(0);else requestAnimationFrame(draw);
 
 const count=document.querySelector('[data-count]');
-const countObserver=new IntersectionObserver(entries=>entries.forEach(e=>{if(!e.isIntersecting)return;countObserver.disconnect();if(reduced){count.textContent='7581';return}const start=performance.now(),duration=1200;function tick(now){const p=Math.min((now-start)/duration,1),ease=1-Math.pow(1-p,3);count.textContent=String(Math.round(7581*ease)).padStart(4,'0');if(p<1)requestAnimationFrame(tick)}requestAnimationFrame(tick)}),{threshold:.7});countObserver.observe(count);
+count.textContent='0.7581';
 
 document.querySelectorAll('.year-card,.swot-card').forEach(card=>card.addEventListener('pointermove',e=>{if(reduced||innerWidth<900)return;const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;card.style.transform=`perspective(800px) rotateX(${-y*3}deg) rotateY(${x*3}deg) translateY(-6px)`}));
 document.querySelectorAll('.year-card,.swot-card').forEach(card=>card.addEventListener('pointerleave',()=>card.style.transform=''));
 
 const systemData={
-  wafer:{index:'INSTRUMENT 01 / QUALITY GATE',domain:'Semiconductor analytics',title:'WaferPulse',summary:'An explainable quality-risk workflow connecting equipment traces, statistical controls and model evidence.',question:'Can high-risk wafers be identified before packaging adds more cost?',build:'A staged workflow combining data checks, SPC/PSI monitoring, anomaly detection, yield prediction and SHAP review.',evidence:'0.7581 R² for early final-test yield prediction; 0.8006 R² at wafer-average benchmark level.',reflection:'Useful automation must keep the engineer in the loop and make uncertainty visible.',metric:'0.8006',caption:'R² · wafer-average benchmark',stack:['SPC','PSI','SHAP','STREAMLIT'],link:'https://waferpulse.streamlit.app/',linkText:'Open live system ↗',mode:'wafer',flow:['TRACE','MODEL','ACTION']},
+  wafer:{index:'INSTRUMENT 01 / QUALITY GATE',domain:'Semiconductor analytics',title:'WaferPulse',summary:'An explainable quality-risk workflow connecting equipment traces, statistical controls and model evidence.',question:'Can high-risk wafers be identified before packaging adds more cost?',build:'A staged workflow combining data checks, SPC/PSI monitoring, anomaly detection, yield prediction and SHAP review.',evidence:'0.7581 R² for early final-test yield prediction; 88.64% reported accuracy.',reflection:'Useful automation must keep the engineer in the loop and make uncertainty visible.',metric:'88.64%',caption:'Reported accuracy',stack:['SPC','PSI','SHAP','STREAMLIT'],link:'https://waferpulse.streamlit.app/',linkText:'Open live system ↗',mode:'wafer',flow:['TRACE','MODEL','ACTION']},
   etap:{index:'INSTRUMENT 02 / GRID STUDY',domain:'Power systems',title:'ETAP Network Study',summary:'A contingency-led power-flow study that tested cable loading, bus capacity, voltage and source power factor.',question:'How should a network be reinforced when one contingency pushes equipment beyond acceptable loading?',build:'Modelled operating cases in ETAP, compared power-flow results, sized the cable response and prepared an engineering handover.',evidence:'The selected upgrade reduced the reported cable loading to 88.5% while keeping the system case reviewable.',reflection:'A technically valid change still needs assumptions, contingencies and handover evidence to be useful to another engineer.',metric:'88.5%',caption:'reported cable loading after upgrade',stack:['ETAP','LOAD FLOW','CONTINGENCY','HANDOVER'],mode:'etap',flow:['GRID','CABLE','BUS']},
   micro:{index:'INSTRUMENT 03 / EMBEDDED CONTROL',domain:'Smart microgrid ecosystem',title:'Gravity Battery',summary:'An embedded energy-storage prototype integrating position safety, energy tracking, fuzzy control and real-time logging.',question:'Can a small gravity-storage demonstrator coordinate safe motion, energy measurement and adaptive control?',build:'Integrated ESP32 sensing, INA219 energy feedback, fuzzy control and MQTT/Node-RED exchange into one demonstrator.',evidence:'Produced a connected control loop with real-time state visibility rather than an isolated mechanical prototype.',reflection:'Energy systems are cyber-physical systems; safe limits and trustworthy telemetry matter as much as control logic.',metric:'MQTT',caption:'connected control and data exchange',stack:['ESP32','INA219','NODE-RED','FUZZY LOGIC'],mode:'micro',flow:['SENSOR','MQTT','DASHBOARD']},
   speech:{index:'INSTRUMENT 04 / SIGNAL LAB',domain:'Digital signal processing',title:'Speech Enhancement',summary:'A MATLAB workbench comparing classical, adaptive and neural approaches across controlled noise conditions.',question:'Which enhancement method remains intelligible across different noise conditions and trade-offs?',build:'Implemented and compared Wiener, MMSE, NLMS, IIR and CNN-based approaches in a common MATLAB evaluation workbench.',evidence:'Five methods were compared under controlled conditions rather than presenting one algorithm without a baseline.',reflection:'Performance must be judged against the noise context, computational cost and audible artefacts—not a metric alone.',metric:'05',caption:'enhancement methods compared',stack:['WIENER','MMSE','NLMS','CNN','IIR'],mode:'speech',flow:['NOISY','FILTER','SPEECH']},
@@ -74,3 +74,35 @@ if('IntersectionObserver' in window){
   linkedSections.forEach(section=>navObserver.observe(section));
 }
 
+// Project index shares the existing atlas detail panel.
+document.querySelectorAll('[data-work-filter]').forEach(button=>button.addEventListener('click',()=>{
+  const category=button.dataset.workFilter;
+  document.querySelectorAll('[data-work-filter]').forEach(filter=>filter.setAttribute('aria-pressed',String(filter===button)));
+  let count=0;
+  document.querySelectorAll('.work-row').forEach(row=>{row.hidden=category!=='all'&&row.dataset.category!==category;if(!row.hidden)count++});
+  document.querySelector('#work-count').textContent=`${count} ${count===1?'project':'projects'}`;
+}));
+document.querySelectorAll('[data-open-system]').forEach(button=>button.addEventListener('click',()=>{
+  const selector=document.querySelector(`[data-system="${button.dataset.openSystem}"]`);
+  if(!selector)return;
+  selector.click();
+  instrument.setAttribute('tabindex','-1');
+  instrument.scrollIntoView({behavior:reduced?'instant':'smooth',block:'start'});
+  instrument.focus({preventScroll:true});
+}));
+
+// One-time reveals keep the reading order stable and the content visible without JS.
+if(!reduced && 'IntersectionObserver' in window){
+  const workObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{
+    if(!entry.isIntersecting)return;
+    entry.target.animate([{opacity:0,transform:'translateY(22px)'},{opacity:1,transform:'translateY(0)'}],{duration:650,easing:'cubic-bezier(.16,1,.3,1)'});
+    workObserver.unobserve(entry.target);
+  }),{threshold:.12});
+  document.querySelectorAll('.work-row').forEach(row=>workObserver.observe(row));
+  document.querySelectorAll('[data-work-filter]').forEach(button=>button.addEventListener('click',()=>{
+    document.querySelectorAll('.work-row:not([hidden])').forEach((row,i)=>row.animate([{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:350,delay:i*45,easing:'ease-out',fill:'backwards'}));
+  }));
+  document.querySelectorAll('[data-system]').forEach(button=>button.addEventListener('click',()=>{
+    instrument.querySelector('.instrument-copy').animate([{opacity:.25,transform:'translateY(10px)'},{opacity:1,transform:'translateY(0)'}],{duration:380,easing:'ease-out'});
+  }));
+}

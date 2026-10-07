@@ -11,9 +11,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="styles.css?v=4">
-  <link rel="preload" href="systems.css?v=5" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="systems.css?v=5"></noscript>
+  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="preload" href="systems.css?v=6" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="systems.css?v=6"></noscript>
+  <link rel="stylesheet" href="work.css?v=2">
 </head>
 <body>
   <div class="progress" aria-hidden="true"><i></i></div>
@@ -22,7 +23,7 @@
     <a class="brand" href="#top"><b>LYB</b><span>Wafer Lab / Portfolio</span></a>
     <button class="menu" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav id="nav">
-      <a href="#profile">Profile</a><a href="#journey">Journey</a><a href="#evidence">Evidence</a><a href="#systems">Systems</a><a href="#project">FYP</a><a href="#swot">SWOT</a><a href="#outcomes">Outcomes</a>
+      <a href="#profile">Profile</a><a href="#journey">Journey</a><a href="#evidence">Evidence</a><a href="#systems">Projects</a><a href="#project">Case study</a><a href="#swot">SWOT</a><a href="#outcomes">Outcomes</a>
       <a class="resume" href="assets/Resume-Lek-Yong-Bin.pdf" target="_blank">Resume ↗</a>
     </nav>
   </header>
@@ -34,7 +35,7 @@
         <p class="kicker">Product engineering × data intelligence</p>
         <h1 aria-label="See risk before it compounds."><span class="hero-line"><i>See risk</i></span><span class="hero-line soft"><i>before it</i></span><span class="hero-line"><i>compounds.</i></span></h1>
         <p class="hero-deck">I’m <b>Lek Yong Bin</b>, an Electrical &amp; Electronic Engineering undergraduate turning semiconductor test data into decisions engineers can explain, challenge and improve.</p>
-        <div class="hero-actions"><a href="#profile">Enter portfolio</a><a href="assets/Resume-Lek-Yong-Bin.pdf" target="_blank">Open resume</a></div>
+        <div class="hero-actions"><a href="#systems">Explore my projects ↗</a><a href="assets/Resume-Lek-Yong-Bin.pdf" target="_blank">Open resume</a></div>
         <div class="hero-meta"><span>CGPA <b>3.92</b></span><span>INTERNSHIPS <b>03</b></span><span>GOLD AWARDS <b>02</b></span></div>
       </div>
       <div class="hero-lab" aria-label="Animated semiconductor wafer visualization">
@@ -128,10 +129,11 @@
     <section class="section systems" id="systems">
       <div class="section-index"><span>04</span><p>SELECTED SYSTEMS</p></div>
       <div class="systems-head reveal">
-        <div><p class="overline">Engineering atlas / 2023—2026</p><h2>One engineer.<br><em>Many signals.</em></h2></div>
-        <p>Explore the systems behind the résumé. Each node connects a real engineering constraint to the tool, model or control strategy I used to investigate it.</p>
+        <div><p class="overline">Engineering atlas / 2023—2026</p><h2>Selected work.<br><em>Real constraints.</em></h2></div>
+        <p>From semiconductor analytics to connected energy systems. Explore what I built, the problem it addresses and the evidence behind each decision.</p>
       </div>
 
+      <div class="work-index"><div class="work-toolbar"><div class="work-filters" role="group" aria-label="Filter projects"><button type="button" data-work-filter="all" aria-pressed="true">All work <span>07</span></button><button type="button" data-work-filter="data" aria-pressed="false">Data &amp; software</button><button type="button" data-work-filter="energy" aria-pressed="false">Energy &amp; control</button><button type="button" data-work-filter="embedded" aria-pressed="false">Embedded</button></div><span id="work-count" role="status">7 projects</span></div><div class="work-list"><article class="work-row" data-category="data"><span class="work-number">01</span><div class="work-name"><p>Semiconductor / Data & AI</p><h3>WaferPulse</h3><span class="work-tech">SPC · SHAP · Streamlit</span></div><div class="work-description"><p>An explainable quality gate that identifies wafer risk before packaging.</p><span class="work-proof">0.7581 R² / early yield prediction</span></div><button type="button" class="work-open" data-open-system="wafer" aria-label="Explore WaferPulse" aria-controls="system-instrument">Explore <span aria-hidden="true">↗</span></button></article><article class="work-row" data-category="energy"><span class="work-number">02</span><div class="work-name"><p>Power systems</p><h3>ETAP Network Study</h3><span class="work-tech">ETAP · Load flow</span></div><div class="work-description"><p>A contingency-led network study with a reviewable cable upgrade.</p><span class="work-proof">88.5% / cable loading after upgrade</span></div><button type="button" class="work-open" data-open-system="etap" aria-label="Explore ETAP Network Study" aria-controls="system-instrument">Explore <span aria-hidden="true">↗</span></button></article><article class="work-row" data-category="embedded"><span class="work-number">03</span><div class="work-name"><p>Embedded / Energy</p><h3>Gravity Battery</h3><span class="work-tech">ESP32 · MQTT · Node-RED</span></div><div class="work-description"><p>Connected storage control with safe motion and real-time energy feedback.</p><span class="work-proof">Connected control loop</span></div><button type="button" class="work-open" data-open-system="micro" aria-label="Explore Gravity Battery" aria-controls="system-instrument">Explore <span aria-hidden="true">↗</span></button></article><article class="work-row" data-category="data"><span class="work-number">04</span><div class="work-name"><p>Signal processing</p><h3>Speech Enhancement</h3><span class="work-tech">MATLAB · Wiener · CNN</span></div><div class="work-description"><p>A common workbench comparing classical, adaptive and neural noise reduction.</p><span class="work-proof">05 / methods compared</span></div><button type="button" class="work-open" data-open-system="speech" aria-label="Explore Speech Enhancement" aria-controls="system-instrument">Explore <span aria-hidden="true">↗</span></button></article><article class="work-row" data-category="energy"><span class="work-number">05</span><div class="work-name"><p>Power electronics</p><h3>Piezo Energy Harvester</h3><span class="work-tech">LTspice · Simulink</span></div><div class="work-description"><p>A two-stage circuit that conditions a low-amplitude piezoelectric source.</p><span class="work-proof">02 / conversion stages</span></div><button type="button" class="work-open" data-open-system="piezo" aria-label="Explore Piezo Energy Harvester" aria-controls="system-instrument">Explore <span aria-hidden="true">↗</span></button></article><article class="work-row" data-category="data"><span class="work-number">06</span><div class="work-name"><p>Engineering software</p><h3>Smart Energy Monitor</h3><span class="work-tech">App Designer · ARIMA</span></div><div class="work-description"><p>Device records, usage forecasting and solar scenarios in one application.</p><span class="work-proof">Forecast + solar simulation</span></div><button type="button" class="work-open" data-open-system="energy" aria-label="Explore Smart Energy Monitor" aria-controls="system-instrument">Explore <span aria-hidden="true">↗</span></button></article><article class="work-row" data-category="energy"><span class="work-number">07</span><div class="work-name"><p>Adaptive control</p><h3>Demand Response</h3><span class="work-tech">MATLAB · Fuzzy logic</span></div><div class="work-description"><p>Interpretable fuzzy rules linking demand, time and local energy availability.</p><span class="work-proof">Traceable control decisions</span></div><button type="button" class="work-open" data-open-system="demand" aria-label="Explore Demand Response" aria-controls="system-instrument">Explore <span aria-hidden="true">↗</span></button></article></div></div><div class="work-detail-heading"><p class="overline">Inside the work / interactive atlas</p><p>Select a project to explore the question, build and evidence.</p></div>
       <div class="systems-workbench reveal signal-sequence">
         <div class="systems-atlas" aria-label="Interactive atlas of selected engineering projects">
           <div class="atlas-orbit orbit-one" aria-hidden="true"></div><div class="atlas-orbit orbit-two" aria-hidden="true"></div><div class="atlas-orbit orbit-three" aria-hidden="true"></div>
@@ -160,10 +162,10 @@
             <div class="instrument-dossier">
               <div><span>QUESTION</span><p id="instrument-question">Can high-risk wafers be identified before packaging adds more cost?</p></div>
               <div><span>MY BUILD</span><p id="instrument-build">A staged workflow combining data checks, SPC/PSI monitoring, anomaly detection, yield prediction and SHAP review.</p></div>
-              <div><span>EVIDENCE</span><p id="instrument-evidence">0.7581 R² for early final-test yield prediction; 0.8006 R² at wafer-average benchmark level.</p></div>
+              <div><span>EVIDENCE</span><p id="instrument-evidence">0.7581 R² for early final-test yield prediction; 88.64% reported accuracy.</p></div>
               <div><span>REFLECTION</span><p id="instrument-reflection">Useful automation must keep the engineer in the loop and make uncertainty visible.</p></div>
             </div>
-            <div class="instrument-proof"><strong id="instrument-metric">0.8006</strong><span id="instrument-caption">R² · wafer-average benchmark</span></div>
+            <div class="instrument-proof"><strong id="instrument-metric">88.64%</strong><span id="instrument-caption">Reported accuracy</span></div>
             <div class="instrument-stack" id="instrument-stack"><span>SPC</span><span>PSI</span><span>SHAP</span><span>STREAMLIT</span></div>
             <a id="instrument-link" href="https://waferpulse.streamlit.app/" target="_blank" rel="noreferrer">Open live system ↗</a>
           </div>
@@ -177,7 +179,7 @@
 
     <section class="project" id="project">
       <div class="gate-layout">
-        <div class="gate-copy reveal"><p class="overline">Final Year Project / flagship case</p><h2>Not a pipeline.<br><span>A decision gate.</span></h2><p>Identify high-risk wafers before packaging—and keep the engineering judgement traceable.</p><div class="gate-metric"><b data-count="7581">0</b><span>R² / EARLY FINAL-TEST<br>YIELD PREDICTION</span></div><a class="project-link" href="https://waferpulse.streamlit.app/" target="_blank" rel="noreferrer"><span>Launch live system</span><b>WaferPulse ↗</b><small>Interactive Streamlit application</small></a></div>
+        <div class="gate-copy reveal"><p class="overline">Final Year Project / flagship case</p><h2>Not a pipeline.<br><span>A decision gate.</span></h2><p>Identify high-risk wafers before packaging—and keep the engineering judgement traceable.</p><div class="gate-metric"><b data-count="7581">0.7581</b><span>R² / EARLY FINAL-TEST<br>YIELD PREDICTION</span></div><a class="project-link" href="https://waferpulse.streamlit.app/" target="_blank" rel="noreferrer"><span>Launch live system</span><b>WaferPulse ↗</b><small>Interactive Streamlit application</small></a></div>
         <div class="decision-gate reveal signal-sequence" aria-label="Predictive Wafer Quality Gate decision map">
           <i class="gate-ring r1"></i><i class="gate-ring r2"></i><i class="gate-ring r3"></i>
           <div class="gate-core"><small>ENGINEER</small><b>QUALITY<br>GATE</b></div>
@@ -188,7 +190,7 @@
           <article class="gate-node n5"><small>05 / EXPLAIN</small><h3>SHAP review</h3><b>TRACEABLE JUDGEMENT</b></article>
         </div>
       </div>
-      <div class="result-grid reveal"><article><strong>7581</strong><span>R² · EARLY YIELD PREDICTION</span></article><article><strong>EARLIER</strong><span>ABNORMAL-WAFER VISIBILITY</span></article><article><strong>TRACEABLE</strong><span>MODEL-TO-DECISION LOGIC</span></article></div>
+      <div class="result-grid reveal"><article><strong>0.7581</strong><span>R² · EARLY YIELD PREDICTION</span></article><article><strong>EARLIER</strong><span>ABNORMAL-WAFER VISIBILITY</span></article><article><strong>TRACEABLE</strong><span>MODEL-TO-DECISION LOGIC</span></article></div>
       <div class="case-notes reveal">
         <article><span>01 / PROBLEM</span><h3>Packaging commits cost before final-test risk is fully visible.</h3><p>I reframed prediction as a quality gate: not “What will the model score?”, but “What evidence should trigger engineering review before value is added?”</p></article>
         <article><span>02 / DATA DISCIPLINE</span><h3>Bad inputs create confident mistakes.</h3><p>The workflow begins with probe-result integrity, feature correlation and distribution-shift checks. SPC and PSI distinguish ordinary variation from a population that may no longer resemble the training data.</p></article>
@@ -239,4 +241,3 @@
   <script src="script.js?v=4" defer></script>
 </body>
 </html>
-
