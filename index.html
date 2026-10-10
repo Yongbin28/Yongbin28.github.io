@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
   <noscript><link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"></noscript>
-  <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="preload" href="systems.css?v=6" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="systems.css?v=6"></noscript>
   <link rel="stylesheet" href="work.css?v=2">
@@ -190,7 +190,11 @@
           <article class="gate-node n5"><small>05 / EXPLAIN</small><h3>SHAP review</h3><b>TRACEABLE JUDGEMENT</b></article>
         </div>
       </div>
-      <div class="result-grid reveal"><article><strong>0.7581</strong><span>R² · EARLY YIELD PREDICTION</span></article><article><strong>EARLIER</strong><span>ABNORMAL-WAFER VISIBILITY</span></article><article><strong>TRACEABLE</strong><span>MODEL-TO-DECISION LOGIC</span></article></div>
+      <div class="result-grid reveal" aria-label="WaferPulse highlights">
+        <article><span class="result-label">01 / MODEL PERFORMANCE</span><h3>Yield prediction</h3><strong>0.7581 <small>R²</small></strong><p>Predict final-test yield from earlier process data.</p></article>
+        <article><span class="result-label">02 / RISK VISIBILITY</span><h3>Earlier risk detection</h3><p>Flag abnormal wafers before packaging adds more cost.</p></article>
+        <article><span class="result-label">03 / ENGINEERING REVIEW</span><h3>Explainable decisions</h3><p>Use SHAP to show which signals drive model predictions and support engineering review.</p></article>
+      </div>
       <div class="case-notes reveal">
         <article><span>01 / PROBLEM</span><h3>Packaging commits cost before final-test risk is fully visible.</h3><p>I reframed prediction as a quality gate: not “What will the model score?”, but “What evidence should trigger engineering review before value is added?”</p></article>
         <article><span>02 / DATA DISCIPLINE</span><h3>Bad inputs create confident mistakes.</h3><p>The workflow begins with probe-result integrity, feature correlation and distribution-shift checks. SPC and PSI distinguish ordinary variation from a population that may no longer resemble the training data.</p></article>
